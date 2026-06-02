@@ -1,0 +1,48 @@
+2026-05-28T06:11:25.666837560Z ==========
+2026-05-28T06:11:25.666841550Z == CUDA ==
+2026-05-28T06:11:25.666844140Z ==========
+2026-05-28T06:11:25.670731738Z CUDA Version 12.1.0
+2026-05-28T06:11:25.671819286Z Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+2026-05-28T06:11:25.673242037Z This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+2026-05-28T06:11:25.673245146Z By pulling and using the container, you accept the terms and conditions of this license:
+2026-05-28T06:11:25.673247737Z https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+2026-05-28T06:11:25.673252346Z A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+2026-05-28T06:11:25.682980977Z *************************
+2026-05-28T06:11:25.682990127Z ** DEPRECATION NOTICE! **
+2026-05-28T06:11:25.683111788Z *************************
+2026-05-28T06:11:25.683125708Z THIS IMAGE IS DEPRECATED and is scheduled for DELETION.
+2026-05-28T06:11:25.683129868Z     https://gitlab.com/nvidia/container-images/cuda/blob/master/doc/support-policy.md
+2026-05-28T06:11:27.532108264Z [WORKER] Starting...
+2026-05-28T06:11:27.532141055Z --- Starting Serverless Worker |  Version 1.7.0 ---
+2026-05-28T06:11:28.628133826Z {"requestId": "688d951b-45d5-4ff7-b4c9-ef15e00ded01-u2", "message": "Started.", "level": "INFO"}
+2026-05-28T06:11:28.628570129Z [INFO][+0.0s] === JOB 688d951b-45d5-4ff7-b4c9-ef15e00ded01-u2 ===
+2026-05-28T06:11:28.629508696Z [INFO][+0.0s] Descargando...
+2026-05-28T06:11:29.659692152Z [INFO][+1.0s] Descargado: 44 MB
+2026-05-28T06:11:29.659716662Z [INFO][+1.0s] Extrayendo ZIP...
+2026-05-28T06:11:29.801073602Z [INFO][+1.2s] ━━━ ETAPA 1: Extracción de frames ━━━
+2026-05-28T06:11:29.801195294Z [INFO][+1.2s] Fotos: 78
+2026-05-28T06:11:29.819999229Z [INFO][+1.2s] Frames: 78
+2026-05-28T06:11:29.820012259Z [INFO][+1.2s] ━━━ ETAPA 2: Filtro de blur ADAPTATIVO ━━━
+2026-05-28T06:12:13.652846869Z [INFO][+45.0s] Varianzas: min=4.3, max=1124.8, media=126.0, mediana=51.0
+2026-05-28T06:12:13.653156371Z [INFO][+45.0s] Sobre umbral absoluto (30.0): 54/78 (69%)
+2026-05-28T06:12:13.653231222Z [INFO][+45.0s] Modo: NORMAL (umbral absoluto = 30.0)
+2026-05-28T06:12:13.654348000Z [INFO][+45.0s] Nítidas: 54, Borrosas eliminadas: 24
+2026-05-28T06:12:13.654562911Z [INFO][+45.0s] Frames finales: 54
+2026-05-28T06:12:13.654602332Z [INFO][+45.0s] ━━━ ETAPA 3: Depth Anything V2 ━━━
+2026-05-28T06:12:16.093497967Z [INFO][+47.5s] Device: cuda
+2026-05-28T06:12:22.780950049Z You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset
+2026-05-28T06:12:28.007051153Z [INFO][+59.4s]   Depth 25/54
+2026-05-28T06:12:38.228466354Z [INFO][+69.6s]   Depth 50/54
+2026-05-28T06:12:38.894107169Z [INFO][+70.3s] Depth maps: 54
+2026-05-28T06:12:38.894140809Z [INFO][+70.3s] ━━━ ETAPA 4: Mask2Former ━━━
+2026-05-28T06:12:43.387961557Z [INFO][+74.8s]   Masks 25/54
+2026-05-28T06:12:46.469113278Z [INFO][+77.8s]   Masks 50/54
+2026-05-28T06:12:46.997375671Z [INFO][+78.4s] Máscaras: 54
+2026-05-28T06:12:47.003093073Z [INFO][+78.4s] ━━━ ETAPA 5: COLMAP ━━━
+2026-05-28T06:12:47.003501215Z [INFO][+78.4s] [features] colmap feature_extractor --database_path /tmp/gs_wqxbdydd/colmap/database.db --image_path /tmp/gs_wqxbdydd/frames
+2026-05-28T06:12:49.126774522Z [INFO][+80.5s] [matching] colmap exhaustive_matcher --database_path /tmp/gs_wqxbdydd/colmap/database.db --SiftMatching.use_gpu 1
+2026-05-28T06:12:51.623027291Z [INFO][+83.0s] [mapper] colmap mapper --database_path /tmp/gs_wqxbdydd/colmap/database.db --image_path /tmp/gs_wqxbdydd/frames
+2026-05-28T06:14:56.338705010Z [INFO][+207.7s] [undistort] colmap image_undistorter --image_path /tmp/gs_wqxbdydd/frames --input_path /tmp/gs_wqxbdydd/colmap/sparse/0
+2026-05-28T06:14:57.126487217Z [INFO][+208.5s] COLMAP OK
+2026-05-28T06:14:57.126909900Z [INFO][+208.5s] ━━━ ETAPA 6: gsplat (7000 iter) ━━━
+2026-05-28T06:14:57.127448004Z [INFO][+208.5s] [gsplat] python /opt/gsplat-repo/examples/simple_trainer.py default --data_dir /tmp/gs_wqxbdydd/colmap --data_factor
